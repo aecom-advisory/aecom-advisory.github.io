@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Advisory - Home</title>
+    <link rel="stylesheet" href="/styles/style-analyses.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-r.min.js"></script>
+    <script src="/resources/codeReader.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Insert Navigation Bar -->
+    <div id="nav-placeholder"></div>
+    <script>
+        $(function () {
+            $("#nav-placeholder").load("/html/navbar.html");
+        });
+    </script>
+
+    <section class="hero">
+        <p class="hero-caption">
+            AECOM Advisory
+        </p>
+        <h1 class="hero-title">
+            Investor Confidence Analysis
+        </h1>
+        <p class="hero-subtitle">
+            Calculate the degree to which private property in an area is backed
+            by financial institutions through mortgages - an indicator of the
+            level of confidence investors have in housing development in the
+            area.
+        </p>
+        <p class="hero-subtitle">
+            Download the package below to view sample code, detailed tutorials,
+            and project examples that use these analyses.
+        </p>
+        <div class="hero-buttons">
+            <a href="#" download class="hero-button">Download Package</a>
+        </div>
+    </section>
+
+    <main class="content">
+
+        <h2>Overview</h2>
+
+        <p>An investor confidence analysis is completed using loan/mortgage data
+        alongside Census data. It shows the ratio of total mortgaged property to
+        total property value in the study area. A high investor confidence ratio
+        implies that the private sector has high confidence in the financial
+        feasibility of housing development in a certain area, and therefore are
+        more willing to provide loans for the same. A low investor confidence
+        ratio implies the opposite - the private sector is not confident about
+        developing housing in a certain area, and is therefore less likely to
+        help finance construction or ownership.</p>
+
+        <h2>Data Sources</h2>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Source</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a target="blank"
+                    href="https://www.consumerfinance.gov/data-research/hmda/">HMDA
+                    Data</a></td>
+                    <td> Loan-level data that financial institutions are
+                    required to report to the federal government for most
+                    mortgage applications. Each record covers a single
+                    application and includes the loan type, amount, purpose
+                    (purchase, refinance, home improvement), property location
+                    down to the census tract, applicant demographics (race,
+                    ethnicity, sex, income), and the outcome (originated,
+                    denied, withdrawn, etc). The total mortgage value for
+                    originated loans represents the numerator in this analysis.
+                    </td>
+                </tr>
+                <tr>
+                    <td><a target="blank" href="https://data.census.gov/">ACS
+                    Data</a></td>
+                    <td> Table B25082 reports the aggregate property value for a
+                    study area, and is used as the denominator in this analysis.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Package Contents</h2>
+
+        <p>The package available for download contains:</p>
+
+        <ul>
+            <li>Sample code (R & Python) that performs an investor confidence
+            analysis for Census Tracts in the city of Chicago in 2024.</li>
+            <li>A sample data download from HMDA for originated loans in Cook
+            County, IL, for 2024. This is the dataset used in the sample code
+            above.</li>
+        </ul>
+
+
+    </main>
+
+</body>
+
+</html>

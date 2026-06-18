@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Advisory - Home</title>
+    <link rel="stylesheet" href="/styles/style-index.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+
+    <!-- Insert Navigation Bar -->
+    <div id="nav-placeholder"></div>
+    <script>
+        $(function () {
+            $("#nav-placeholder").load("/html/navbar.html");
+        });
+    </script>
+
+    <section class="hero">
+        <p class="hero-caption">
+            AECOM Advisory
+        </p>
+        <h1 class="hero-title">
+            Methodology Guide
+        </h1>
+        <p class="hero-subtitle">
+            A unified reference for analyses, tools, and data sources used
+            across the AECOM Advisory practice
+        </p>
+    </section>
+
+    <div class="card-grid">
+
+        <a href="/html/analyses.html" class="card">
+            <h2 class="card-title">
+                Analyses
+            </h2>
+            <p class="card-description">
+                Browse the methodologies and analytical frameworks used across
+                the Advisory practice.
+            </p>
+        </a>
+
+        <a href="#" class="card">
+            <h2 class="card-title">
+                Tools
+            </h2>
+            <p class="card-description">
+                Tools and web-apps to automate workflows.
+            </p>
+        </a>
+
+    </div>
+
+
+</body>
+
+</html>

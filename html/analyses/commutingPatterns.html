@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Advisory - Home</title>
+    <link rel="stylesheet" href="/styles/style-analyses.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-r.min.js"></script>
+    <script src="/resources/codeReader.js"></script>
+</head>
+
+<body>
+
+    <!-- Insert Navigation Bar -->
+    <div id="nav-placeholder"></div>
+    <script>
+        $(function () {
+            $("#nav-placeholder").load("/html/navbar.html");
+        });
+    </script>
+
+    <section class="hero">
+        <p class="hero-caption">
+            AECOM Advisory
+        </p>
+        <h1 class="hero-title">
+            Commuting Patterns
+        </h1>
+        <p class="hero-subtitle">
+            Explore commuting patterns of residents and workers using LODES and
+            ACS data sources.
+        </p>
+        <p class="hero-subtitle">
+            Download the package below to view sample code, detailed tutorials,
+            and project examples that use these analyses.
+        </p>
+        <div class="hero-buttons">
+            <a href="#" download class="hero-button">Download Package</a>
+        </div>
+    </section>
+
+    <main class="content">
+
+        <h2>Overview</h2>
+
+        <p>
+            The analysis of commuting patterns focuses on movement of residents
+            and workers between their residences and workplaces. This analysis
+            helps inform planners about both commuting options and patterns.
+        </p>
+
+        <h2> Data Sources </h2>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Source</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a target="blank" href="https://data.census.gov/">ACS
+                    Data</a></td>
+                    <td>Census data is helpful for an overview of commuting
+                    options and resident characteristics. Specifically, Table
+                    B08301 from the American Community Survey (ACS) provides an
+                    overview of the means of transportation utilized by
+                    residents of a specific area. To learn more about ACS data
+                    and how to pull it, refer to the <a
+                    href="/html/analyses/existingConditions.html">Existing
+                    Conditions</a> page.
+                    </td>
+                </tr>
+                <tr>
+                    <td><a target="blank"
+                    href="https://onthemap.ces.census.gov/">Census
+                    OnTheMap</a></td>
+                    <td>Census OnTheMap is a web-interface produced by the
+                    Census Bureau that provides a detailed overview of, given a
+                    geography, the number of people who live and work there
+                    (residents and workers), the number of people who live but
+                    don't work there (out-commuters), and the number of people
+                    who don't live there but do work there (in-commuters).
+                    Census OnTheMap is a helpful tool to provide an overview of
+                    the commuting patterns for a given geography.
+                    </td>
+                </tr>
+                <tr>
+                    <td><a target="blank"
+                    href="https://lehd.ces.census.gov/data/">Longitudinal
+                    Employer-Household Dynamics (LEHD)</a></td>
+                    <td>The Longitudinal Employer-Household Dynamics data is
+                    what Census OnTheMap is based on. LEHD provides a dataset
+                    known as LODES (LEHD Origin-Destination Employment
+                    Statistics), which provide granular data on the number of
+                    jobs in each Census Block, where those workers are coming
+                    from, and what kinds of jobs they are working (industries,
+                    wages, etc).
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Using ACS Data</h3>
+
+        <p>It is important to note that ACS data by itself can only help
+        illustrate means/modes of transportation, and cannot offer insight into
+        where workers are coming from or where they are going.</p>
+
+        <p>Typically, understanding commuting patterns and modes is done by
+        using Table B08301 from the ACS. The table's structure and variables are
+        listed below. For a detailed explanation of how to download this data,
+        refer to the <a href="/html/analyses/existingConditions.html">Existing
+        Conditions</a> page.
+        </p>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Variable</th>
+                    <th>Label</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>B08301_001E</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>B08301_002E</td>
+                    <td>Car, truck, or van</td>
+                </tr>
+                <tr>
+                    <td>B08301_003E</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;Drove alone</td>
+                </tr>
+                <tr>
+                    <td>B08301_004E</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;Carpooled</td>
+                </tr>
+                <tr>
+                    <td>B08301_005E</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In
+                    2-person carpool</td>
+                </tr>
+                <tr>
+                    <td>B08301_006E</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In
+                    3-person carpool</td>
+                </tr>
+                <tr>
+                    <td>B08301_007E</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In
+                    4-person carpool</td>
+                </tr>
+                <tr>
+                    <td>B08301_008E</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In 5- or
+                    6-person carpool</td>
+                </tr>
+                <tr>
+                    <td>B08301_009E</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In
+                    7-or-more-person carpool</td>
+                </tr>
+                <tr>
+                    <td>B08301_010E</td>
+                    <td>Public transportation (excluding taxicab)</td>
+                </tr>
+                <tr>
+                    <td>B08301_011E</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;Bus</td>
+                </tr>
+                <tr>
+                    <td>B08301_012E</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;Subway or elevated rail</td>
+                </tr>
+                <tr>
+                    <td>B08301_013E</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;Long-distance train or commuter
+                    rail</td>
+                </tr>
+                <tr>
+                    <td>B08301_014E</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;Light rail, streetcar, or
+                    trolley</td>
+                </tr>
+                <tr>
+                    <td>B08301_015E</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;Ferryboat</td>
+                </tr>
+                <tr>
+                    <td>B08301_016E</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;Taxicab</td>
+                </tr>
+                <tr>
+                    <td>B08301_017E</td>
+                    <td>Motorcycle</td>
+                </tr>
+                <tr>
+                    <td>B08301_018E</td>
+                    <td>Bicycle</td>
+                </tr>
+                <tr>
+                    <td>B08301_019E</td>
+                    <td>Walked</td>
+                </tr>
+                <tr>
+                    <td>B08301_020E</td>
+                    <td>Other means</td>
+                </tr>
+                <tr>
+                    <td>B08301_021E</td>
+                    <td>Worked from home</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>The code block below shows how you might pull this data using the
+        Census API.</p>
+
+        <div class="code-block">
+            <div class="code-toggle">
+                <button class="code-toggle-btn active" data-lang="r"
+                data-src="/resources/codeChunks-R/commutingPatterns/acs-commuting-script.R">R</button>
+                <button class="code-toggle-btn" data-lang="python"
+                data-src="/resources/codeChunks-Python/commutingPatterns/acs-commuting-script.py">Python</button>
+            </div>
+            <pre><code class="language-r"></code></pre>
+        </div>
+
+        <h3>Using Census OnTheMap</h3>
+
+        <ul>
+            <li>Visit <a target="blank"
+            href="https://onthemap.ces.census.gov/">Census OnTheMap</a>.</li>
+            <li>Use the search bar on the left to look for your area of
+            interest. Ensure that you select the right geography. For example,
+            searching for "los angeles" returns several results. In this
+            example, we are concerned with "Los Angeles city". Click on it to
+            select it, then click on "Perform analysis on Selection Area".
+            </li>
+            <img src="/images/analyses/commutingPatterns/census-otm-1.png" alt="">
+            <li>This opens up a popup asking for several specifications.</li>
+            <img src="/images/analyses/commutingPatterns/census-otm-2.png" alt="">
+            <li>The "Analysis Type" has several options, of which "Destination"
+            and "Inflow/Outflow" are commonly used.
+            </li>
+            <li> <strong>Destination:</strong> Shows the home or work
+            destinations of workers employed or living in the selected study
+            area. You choose the geographic destination type (counties, cities,
+            tracts, etc.) from a dropdown. In practice, this tells you where the
+            workers in your study area are commuting to — or, flipped to a home
+            area, where residents are commuting from. </li>
+            <li> <strong>Inflow/Outflow:</strong> Shows the count and
+            characteristics of worker flows into, out of, and within the
+            selected study area. This breaks the workforce into three buckets:
+            workers who live and work inside the area (internal), workers who
+            live outside but work inside (in-commuters), and workers who live
+            inside but work outside (out-commuters). It's the standard analysis
+            for understanding whether an area is a net job importer or
+            exporter.</li>
+        </ul>
+
+        <h3>Using LEHD/LODES Data</h3>
+
+        <p>LODES data offers the most detailed analysis of commuting patterns,
+        but is also the most complex to analyze. LODES offers three analysis types -
+        Origin-Destination (OD), Workplace Area Characteristics (WAC), and
+        Resident Area Characterstics (RAC).</p>
+
+        <ul>
+            <li><strong>Origin-Destination (OD):</strong> Unique pairs of home
+            and destination Census Blocks showing the number of workers that
+            commute from any given Census Block to another Census Block for
+            work.</li>
+            <li><strong>Workplace Area Characteristics (WAC):</strong> Job
+            totals by workplace Census Block, showing, for any given Census
+            Block, the characteristics of the jobs that are worked in that
+            Block.</li>
+            <li><strong>Resident Area Characteristics (RAC):</strong> Job totals
+            by home Census Block, showing, for any given Census Block, how many
+            workers live there, regardless of where they might work.</li>
+        </ul>
+
+        <p>Refer to the <a
+        href="https://lehd.ces.census.gov/doc/help/onthemap/LODESTechDoc.pdf">LODES
+        Technical Documentation</a> for a detailed explanation of file
+        structures and contents.
+        </p>
+
+        <h2>Package Contents</h2>
+
+        <p>The package available for download contains the following:</p>
+
+        <ul>
+            <li>Sample code (R & Python) as well as a sample LODES data download. The analysis in the code 
+                uses Illinois LODES data for 2023 along with Census boundaries to find out where workers 
+                with jobs within the city of Chicago are coming from.
+            </li>
+            <li>The latest LODES Technical Documentation (as of 06/15/2026).</li>
+        </ul>
+
+
+
+
+    </main>
+
+</body>
+
+</html>

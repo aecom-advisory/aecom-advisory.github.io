@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Advisory - Home</title>
+    <link rel="stylesheet" href="/styles/style-analyses.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-r.min.js"></script>
+    <script src="/resources/codeReader.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Insert Navigation Bar -->
+    <div id="nav-placeholder"></div>
+    <script>
+        $(function () {
+            $("#nav-placeholder").load("/html/navbar.html");
+        });
+    </script>
+
+    <section class="hero">
+        <p class="hero-caption">
+            AECOM Advisory
+        </p>
+        <h1 class="hero-title">
+            Industry Clustering
+        </h1>
+        <p class="hero-subtitle">
+            Summarize jobs, Gross Regional Product (GRP), and other metrics by
+            industry and year.
+        </p>
+        <p class="hero-subtitle">
+            Download the package below to view sample code, detailed tutorials,
+            and project examples that use these analyses.
+        </p>
+        <div class="hero-buttons">
+            <a href="#" download class="hero-button">Download Package</a>
+        </div>
+    </section>
+
+    <main class="content">
+
+        <h2>Overview</h2>
+
+        <p>
+            Industry clusters are groups of 6-digit NAICS codes that come
+            together to define a broad industry. Summarizing jobs, GRP, and
+            other metrics by these clusters, across multiple years, helps
+            understand employment trends and local specializations.
+        </p>
+
+        <p>
+            The primary data source for industry data is <a target="_blank"
+            href="https://lightcast.io/">Lightcast.io</a>. Lightcast is a
+            proprietary data source that offers detailed labor market
+            information at several geographic levels (Nation, State, Metro Area,
+            County, ZIP Code).
+        </p>
+
+        <h2> Terminology </h2>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Term</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>NAICS Codes</td>
+                    <td>2-through-6-digit codes that uniquely identify
+                    industries that operate in the U.S. For example, NAICS '11'
+                    is "Agriculture". Each additional digit adds specificity.
+                    NAICS '1111' is "Oilseed and Grain Farming". NAICS '111110'
+                    is "Soybean Farming". Overall, there are 20 broad 2-digit
+                    industries that capture over 900 more specific industries
+                    that are identified by a 6-digit code.</td>
+                </tr>
+                <tr>
+                    <td>SOC Codes</td>
+                    <td>2-through-5-digit codes that uniquely identify
+                    occupations in the U.S. For example, SOC "15-000" refers to
+                    "Computer and Math Occupations". SOC "15-1200" refers to
+                    "Computer Occupations". SOC "15-1210" refers to "Computer
+                    and Information Analysts". SOC "15-1212" refers to
+                    "Information Security Analysts". There are 23 broad groups
+                    identified by 2-digit SOC codes, with several hundred more
+                    specific occupations identified by 5-digit SOC codes.</td>
+                </tr>
+                <tr>
+                    <td>Jobs</td>
+                    <td> Total number of people employed by an industry in a
+                    given calendar year.</td>
+                </tr>
+                <tr>
+                    <td>GRP</td>
+                    <td>Gross Regional Product (GRP) refers to the total value
+                    of goods and services produced by an industry in a given
+                    calendar year. The term GRP is often synonymous with
+                    'output', and is a reliable measure for tracking the
+                    productivity of industries, especially when combined with a
+                    jobs metric to produce an estimate of total output per job
+                    in an industry.</td>
+                </tr>
+                <tr>
+                    <td>Location Quotient (LQ)</td>
+                    <td>Location quotients are measures of local industry
+                    specialization. Taking the example of the industry
+                    identified by NAICS code '11' (Agriculture) in Cook County,
+                    IL, the LQ of the industry for 2025 can be calculated as the
+                    ratio of local Agriculture employment to total local
+                    employment divided by the ratio of national Agriculture
+                    employment to total national employment. An LQ below 1
+                    indicates less local specialization than the national
+                    average, while an LQ above 1 indicates greater local
+                    specialization. Note that the "reference" geography (the
+                    denominator) does not need to be the nation in all cases -
+                    LQs can be computed relative to any other geography, though
+                    using the parent State or the nation is typical. Read more
+                    about LQs <a target="_blank"
+                    href="https://www.bea.gov/help/faq/478">here</a>.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Methodology - Industry Data</h2>
+
+        <h3>Logging into Lightcast and pulling data</h3>
+
+        <ul>
+            <li>Before logging into <a target="_blank"
+            href="https://lightcast.io/">Lightcast.io</a>, visit the <a
+            target="_blank" href="https://lightcast.io/">license checkout</a> to
+            check out a license with your AECOM email id. Credentials for
+            accessing Lightcast will be sent over to the AECOM email id, and can
+            then be used to log in.</li>
+            <li>Navigate to the "Data Download" tab. Fill the required fields to
+            specify the geographies to analyze. For the NAICS codes, it is
+            typical to use the group of all 6-digit NAICS codes.</li>
+            <li>Use the "Select columns" feature to select the specific columns
+            needed. Please note that GRP is available only through the "Industry
+            Table" report within the "Industry" tab.</li>
+            <li>Once the required geographies and industries are selected, run
+            the report and download the data as a .csv file.</li>
+        </ul>
+
+        <img src="/images/analyses/clustering/lightcast-dataDownload.gif"
+        alt="Lightcast data download walkthrough">
+        <p class="img-caption">Lightcast data download interface</p>
+
+        <h3>Analyzing the data</h3>
+
+        <ul>
+            <li>The downloaded data can be analyzed in one of three ways -
+            Excel, in R/Python, or via the <a target="_blank"
+            href="https://lightcast.io/">Advisory NAICS Cluster tool</a>.</li>
+            <li>If analyzing data in Excel or R/Python, refer to the materials
+            in the package available for download above.</li>
+            <li>If analyzing the data through the <a target="_blank"
+            href="https://lightcast.io/">Advisory NAICS Cluster tool</a>, refer
+            to the instructions provided with the tool.</li>
+        </ul>
+
+        <h2>Package Contents</h2>
+
+        <p>The package available for download contains the following:</p>
+
+        <ul>
+            <li>Sample code (R & Python) as well as sample Lightcast downloads.
+            The analysis in the code clusters industry data for Cook County from
+            2016 to 2025, and computes location quotients based on national
+            data.
+            </li>
+            <li>A slide deck providing an overview of the data and analyses
+            available in Lightcast.</li>
+        </ul>
+
+
+    </main>
+
+</body>
+
+</html>

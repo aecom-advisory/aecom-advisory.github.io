@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Advisory - Home</title>
+    <link rel="stylesheet" href="/styles/style-analyses.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-r.min.js"></script>
+    <script src="/resources/codeReader.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Insert Navigation Bar -->
+    <div id="nav-placeholder"></div>
+    <script>
+        $(function () {
+            $("#nav-placeholder").load("/html/navbar.html");
+        });
+    </script>
+
+    <section class="hero">
+        <p class="hero-caption">
+            AECOM Advisory
+        </p>
+        <h1 class="hero-title">
+            Susceptibility to Change Analysis
+        </h1>
+        <p class="hero-subtitle">
+            Calculate the redevelopment suitability of parcels based on assessed
+            value, lot coverage, and age of structure.
+        </p>
+        <p class="hero-subtitle">
+            Download the package below to view sample code, detailed tutorials,
+            and project examples that use these analyses.
+        </p>
+        <div class="hero-buttons">
+            <a href="#" download class="hero-button">Download Package</a>
+        </div>
+    </section>
+
+    <main class="content">
+
+        <h2>Overview</h2>
+
+        <p>A susceptibility to change analysis is done at the parcel-level and
+            identifies parcels that are more likely to be redeveloped in the future
+            (relative to other parcels in the area). Parcel data for this analysis
+            will usually be obtained via the client's GIS portal or through a data
+            request.</p>
+
+        <h2>Methodology</h2>
+
+        <p>This analysis typically operates on three variables: improvement
+            value ratio, lot coverage ratio, and year of construction.</p>
+
+        <ul>
+            <li><strong>Improvement Value Ratio</strong>: The ratio of a
+                parcel's improvement value to its total assessed value. This
+                variable measures the percent of the total assessed value of the
+                parcel that is attributable to the structure on the parcel. The
+                higher the improvement value ratio, the less suitable a parcel is
+                for redevelopment.</li>
+            <li><strong>Lot Coverage Ratio</strong>: The percent of a parcel's
+                total area that has structures. This is a ratio of the parcel's
+                building footprint to the parcel's total area. The higher the lot
+                coverage ratio, the less suitable a parcel is for
+                redevelopment.</li>
+            <li><strong>Year of Construction</strong>: The year of construction
+                for the structure on the parcel. The newer the structure, the less
+                suitable a parcel is for redevelopment.</li>
+        </ul>
+
+        <p>The variables above are measured against predefined thresholds to
+            calculate a parcel's susceptibility score. Below are the thresholds
+            typically used for this analysis. Note that these thresholds may need to
+            be adjusted to better suit certain study areas.</p>
+
+        <ul>
+            <li><strong>Improvement Value less than or equal to 20% of Total
+                    Assessed Value</strong>: Parcels with an improvement value ratio
+                equal to or less than 20% receive one (1) point.</li>
+            <li><strong>Lot coverage less than or equal to 20%</strong>: Parcels
+                with a building footprint that is equal to or less than 20% of the
+                parcel's total area receive one (1) point.</li>
+            <li><strong>Structures older than 1980</strong>: Parcels with
+                structures built before 1980 receive one (1) point. <strong>Vacant
+                    parcels (parcels with no structures) also receive one (1)
+                    point.</strong></li>
+        </ul>
+
+        <p>In total, a parcel can receive up to a maximum of three (3) points
+            for a susceptibility score. Parcel scores are typically labeled as
+            follows:
+        </p>
+
+        <ul>
+            <li><strong>0 - 1 pt</strong>: Low Susceptibility</li>
+            <li><strong>2 pts</strong>: Medium Susceptibility</li>
+            <li><strong>3 pts</strong>: High Susceptibility</li>
+        </ul>
+
+
+
+    </main>
+
+</body>
+
+</html>

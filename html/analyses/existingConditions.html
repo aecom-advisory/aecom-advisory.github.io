@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Advisory - Home</title>
+    <link rel="stylesheet" href="/styles/style-analyses.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-r.min.js"></script>
+    <script src="/resources/codeReader.js"></script>
+</head>
+
+<body>
+
+    <!-- Insert Navigation Bar -->
+    <div id="nav-placeholder"></div>
+    <script>
+        $(function () {
+            $("#nav-placeholder").load("/html/navbar.html");
+        });
+    </script>
+
+    <section class="hero">
+        <p class="hero-caption">
+            AECOM Advisory
+        </p>
+        <h1 class="hero-title">
+            Existing Conditions
+        </h1>
+        <p class="hero-subtitle">
+            Explore demographic profiles of a given geography through Census
+            data including population, education, employment, and income.
+        </p>
+        <p class="hero-subtitle">
+            Download the package below to view sample code, detailed tutorials,
+            and project examples that use these analyses.
+        </p>
+        <div class="hero-buttons">
+            <a href="#" download class="hero-button">Download Package</a>
+        </div>
+    </section>
+
+    <main class="content">
+
+        <h2>Overview</h2>
+
+        <p>
+            Demographic information, such as population, educational attainment,
+            employment, and income set the foundation for understanding existing
+            conditions in an area of interest. The primary data source of
+            demographic information is the U.S. Census Bureau. The data is
+            usually collected through the American Community Survey (ACS), which
+            is conducted every year, (most recently available from 2024) or the
+            Decennial Census (conducted every 10 years, most recently in 2020).
+            Given the recency of data available, ACS is used in most demographic
+            data collection processes. Longitudinal comparison for tracking
+            changes over a time frame (usually 10 years or more) is also common.
+        </p>
+
+        <h2> Options for pulling data </h2>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Link / Doc</th>
+                    <th>Pros</th>
+                    <th>Cons</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Census Webpage Pull</td>
+                    <td><a target="blank"
+                    href="https://data.census.gov/">data.census.gov</a></td>
+                    <td>Easy for users that don't have a coding background</td>
+                    <td>Time-consuming for large batch pulls across years or
+                    multiple variables</td>
+                </tr>
+                <tr>
+                    <td>API Pull (R or Python)</td>
+                    <td>Download package above</td>
+                    <td>API allows efficient data pull across multiple years
+                    and/or variables, and creates a reproducible workflow</td>
+                    <td>Requires knowledge of R or Python</td>
+                </tr>
+                <tr>
+                    <td>Census Pull Tool (AECOM Internal)</td>
+                    <td><a target="blank"
+                    href="https://kjain-aecom.shinyapps.io/census-api-tool/">Link
+                    to Tool</a></td>
+                    <td>Easy for users that don't have a coding background.
+                    Enables pulling multiple variables, multiple years of data,
+                    for multiple geographies simultaneously</td>
+                    <td>Limited set of available variables, and does not include
+                    Block or Block Group data.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Pulling Census data manually</h3>
+
+        <ul>
+            <li> Visit <a target="blank"
+            href="https://kjain-aecom.shinyapps.io/census-api-tool/">data.census.gov</a>.
+            </li>
+            <li> On the home page, click "Explore Filters" to open the advanced
+            search menu. </li>
+            <li>In this example, assume we are looking for the total number of
+            housing units in the state of California. Use the advanced filters
+            in the left sidebar to select California (under Geography > State),
+            and use the Topic filters to select Housing Units (under Topics >
+                Housing > Housing Units). Click "Search". </li>
+            <img src="/images/analyses/existingConditions/census-gov-1.png" alt="">
+            <li>Select the B25002 table, with the heading "Occupancy
+            Status".</li>
+            <li>The table will open up, showing the total, occupied, and vacant
+            housing units in California for the most recent year of data. The
+            dropdown menu next to the table name allows for the selection of a
+            different year of data. Once you have selected the required year,
+            click the Download button (to the right of the dropdown) to download
+            your data as a .xlsx or .csv file.</li>
+            <img src="/images/analyses/existingConditions/census-gov-2.png" alt="">
+        </ul>
+
+        <h3>Pulling Census data via the API, using R or Python</h3>
+
+        <ul>
+            <li>Visit <a target="_blank"
+            href="https://api.census.gov/data/key_signup.html">this link</a> to
+            sign up for a Census API key. The key is delivered via email shortly
+            after signup.</li>
+            <li>Maintain data security standards for storing and using API keys
+            if you plan to publish your code online. If you are planning to use
+            it locally, you can save the API key in a .txt file within your
+            working directory.</li>
+            <li>To optimize usage of the Census API, you need to know common
+            table and variable codes. A list of these can be found in the
+            package available for download above.</li>
+            <li>Assuming we want to pull the same data as in the manual example
+            above (housing units in California for 2024), use the following
+            code:</li>
+
+            <div class="code-block">
+                <div class="code-toggle">
+                    <button class="code-toggle-btn active" data-lang="r"
+                    data-src="/resources/codeChunks-R/existingConditions/census-api-script.R">R</button>
+                    <button class="code-toggle-btn" data-lang="python"
+                    data-src="/resources/codeChunks-Python/existingConditions/census-api-script.py">Python</button>
+                </div>
+                <pre><code class="language-r"></code></pre>
+            </div>
+
+            <li>Note that the variable codes are formatted as
+            "TableNumber_VariableNumber", with an added "E" at the end.</li>
+
+        </ul>
+
+        <h3>Pulling Census data via the Advisory Census API Tool</h3>
+
+        <ul>
+            <li>Visit <a target="_blank"
+            href="https://api.census.gov/data/key_signup.html">the tool</a> and
+            follow the instructions therein.</li>
+            <li>Note that the tool only supports specific variables that are
+            commonly used, and supports the following geographies: Nation,
+            State, MSA, County, Place, Tract</li>
+        </ul>
+
+        <h2>Package Contents</h2>
+
+        <p>The package available for download contains:</p>
+
+        <ul>
+            <li>Sample code (R & Python) that uses the Census API to download and format data for Cook County, IL, (2016 and 2024) for 
+                total population, median age, race/ethnicity breakdown, and median household income.
+            </li>
+            <li>A list of commonly used variables.</li>
+        </ul>
+
+    </main>
+
+</body>
+
+</html>

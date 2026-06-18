@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Advisory - Home</title>
+    <link rel="stylesheet" href="/styles/style-analyses.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+
+    <!-- Insert Navigation Bar -->
+    <div id="nav-placeholder"></div>
+    <script>
+        $(function () {
+            $("#nav-placeholder").load("/html/navbar.html");
+        });
+    </script>
+
+    <section class="hero">
+        <h1 class="hero-title">
+            Analyses
+        </h1>
+        <p class="hero-subtitle">
+            Catalog of common analyses. Each analysis walkthrough includes
+            reproducible steps, as well as R / Python Code and ArcGIS Model
+            Builder toolboxes (wherever applicable).
+        </p>
+    </section>
+
+    <div class="card-grid">
+
+        <a href="/html/analyses/existingConditions.html" class="card">
+            <div class="card-body">
+                <h2 class="card-title">
+                    Existing Conditions: Demographics
+                </h2>
+                <p class="card-description">
+                    Explore demographic profiles of a given geography through
+                    Census data including population, education, employment, and
+                    income.
+                </p>
+            </div>
+            <div class="card-tags">
+                <span class="tag">R</span>
+                <span class="tag">Python</span>
+                <span class="tag">Web Tool</span>
+            </div>
+        </a>
+
+        <a href="/html/analyses/commutingPatterns.html" class="card">
+            <div class="card-body">
+                <h2 class="card-title">Commuting Patterns</h2>
+                <p class="card-description">
+                    Explore commuting patterns of residents and workers using
+                    LODES and ACS data sources.
+                </p>
+            </div>
+            <div class="card-tags">
+                <span class="tag">R</span>
+                <span class="tag">Python</span>
+            </div>
+        </a>
+
+        <a href="/html/analyses/clustering.html" class="card">
+            <div class="card-body">
+                <h2 class="card-title">
+                    Industry Clustering
+                </h2>
+                <p class="card-description">
+                    Summarize jobs, Gross Regional Product (GRP), and other
+                    metrics by industries or occupations.
+                </p>
+            </div>
+            <div class="card-tags">
+                <span class="tag">R</span>
+                <span class="tag">Python</span>
+                <span class="tag">Web Tool</span>
+            </div>
+        </a>
+
+        <a href="/html/analyses/traffic.html" class="card">
+            <div class="card-body">
+                <h2 class="card-title">
+                    Traffic Analysis
+                </h2>
+                <p class="card-description">
+                    Calculate and explore Annual Average Daily Traffic (AADT).
+                </p>
+            </div>
+            <div class="card-tags">
+                <span class="tag">R</span>
+                <span class="tag">Python</span>
+            </div>
+        </a>
+
+        <a href="/html/analyses/susceptibilityToChange.html" class="card">
+            <div class="card-body">
+                <h2 class="card-title">
+                    Susceptibility to Change Analysis
+                </h2>
+                <p class="card-description">
+                    Calculate the redevelopment suitability of parcels based on
+                    assessed value, lot coverage, and age of structure.
+                </p>
+            </div>
+            <div class="card-tags">
+                <span class="tag">R</span>
+                <span class="tag">Python</span>
+            </div>
+        </a>
+
+        <a href="/html/analyses/investorConfidence.html" class="card">
+            <div class="card-body">
+                <h2 class="card-title">
+                    Investor Confidence Analysis
+                </h2>
+                <p class="card-description">
+                    Calculate the degree to which private property in an area is
+                    backed by financial institutions through mortgages - an
+                    indicator of the level of confidence investors have in
+                    housing development in the area.
+                </p>
+            </div>
+            <div class="card-tags">
+                <span class="tag">R</span>
+                <span class="tag">Python</span>
+            </div>
+        </a>
+
+    </div>
+
+
+</body>
+
+</html>
